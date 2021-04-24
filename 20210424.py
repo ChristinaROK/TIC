@@ -1,3 +1,4 @@
+# Programmers (level-2)
 # 파라미터 s를 x번 (1<=x<=len(s)) 왼쪽으로 회전할 때 s가 옮은 문자열이 된 횟수를 출력하시오.
 # 옮은 문자열이란 "()", "{}", "[]"이며, 옮은 문자열이 A일 때, "(A)", "{A}", "[A]"도 옮은 문자열이며 A,B가 옳은 문자열일 때, AB 역시 옳은 문자열이다.
 
@@ -30,3 +31,5 @@ def solution(s):
             answer+=1
             
     return answer
+
+# time complexity 통과 못함
