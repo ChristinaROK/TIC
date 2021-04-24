@@ -7,7 +7,7 @@ partner = {"(" : ")", "[" : "]", "{" : "}", ")" : "(", "]" : "[", "}" : "{"}
 partner_sort = {"(" : ")", "[" : "]", "{" : "}"}
 
 def solution(s):
-    # 1. Is partner counted the same? 
+    # 1. Is partner (exist) and counted the same? 
     s_dict = collections.Counter(s)
     for key, value in s_dict.items():
         if value != s_dict.get(partner.get(key)):
@@ -22,18 +22,21 @@ def solution(s):
         
         for start, end in partner_sort.items():
             start_idx = s.find(start)
-            
-            if start_idx<0:
-                break
-                
-            end_idx = s.find(end)
-            if (start_idx > end_idx):
-                fail = True
-                break
+            if start_idx!=-1:
+                end_idx = s.find(end)
+                for j in range(s_dict.get(start)):
+                    
+                    if start_idx > end_idx:
+                        fail = True
+                        break
+                    
+                    start_idx = s.find(start, start_idx+1)
+                    end_idx = s.find(end, end_idx+1)
                 
         if not fail:
             answer+=1
             
     return answer
+      
 
-# time complexity 통과 못함
+# 14 case 통과 못함
