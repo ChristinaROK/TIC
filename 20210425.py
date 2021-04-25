@@ -5,4 +5,16 @@ from collections import Counter
 def solution(participant, completion):
     for i in Counter(participant) - Counter(completion):
         return i
+
+# hash를 사용한 코드 (남의 코드)
+def solution(participant, completion):
+    tot = 0
+    dic = {}
+    for name in participant:
+        tot+=hash(name)
+        dic[hash(name)]=name
+    for name in completion:
+        tot-=hash(name)
+    return dic[tot]
+
 # 통과!
