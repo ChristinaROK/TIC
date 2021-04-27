@@ -2,17 +2,20 @@
 
 import string
 def solution(name):
-    strings = string.ascii_uppercase
-    s_len = len(strings)
+    upper = string.ascii_uppercase
+    alpha_len = len(upper)
     cnt = {}
     
-    for i, char in enumerate(strings):
-      if (s_len/2) - i > 0:
-        cnt[char]=i
-      else:
-        cnt[char]=s_len-i
+    for i, char in enumerate(upper):
+        if alpha_len/2-i >0:
+            cnt[char] = i
+        else:
+            cnt[char] = alpha_len-i
     
-    # ing ...
+    answer = sum(cnt.get(char) for char in name)
+    answer += min(len(name[0]+name[:0:-1].rstrip("A")),len(name.rstrip("A")))-1
+            
     return answer
 
-  # ing
+# 테스트 케이스 11번 통과 못함
+# 나는 greedy와 관련 없이 풂
