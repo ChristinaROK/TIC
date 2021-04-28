@@ -24,4 +24,24 @@ def solution(answers):
 
     return answer
   
-  # 성공!
+# 성공!
+# list max value idx return 코드 개선
+
+def solution(answers):
+    length = len(answers)
+    a = [i for i in range(1,6)]
+    b = [2,1,2,3,2,4,2,5]
+    c = [3,3,1,1,2,2,4,4,5,5]
+    list_func = lambda x : x*(length//len(x)) + x[:length%len(x)]
+
+    res = [0,0,0]
+    for ans, a, b, c in zip(answers, list_func(a), list_func(b), list_func(c)):
+        abc = [a,b,c]
+        for i in range(3):
+            res[i] += int(ans == abc[i])
+
+    ### initial 값을 max로 설정 ###
+    max_value = max(res)
+    answer = sorted([i+1 for i, v in enumerate(res) if max_value == v])
+
+    return answer
