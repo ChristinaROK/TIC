@@ -21,3 +21,8 @@ def solution(record):
     return answer
   
   # 통과!
+
+# shortest
+def solution(record):
+    id2name = {r.split()[1] : r.split()[-1] for r in record if r.split()[0] != "Leave"}
+    return [f"{id2name[r.split()[1]]}님이 들어왔습니다." if r.split()[0] == "Enter" else f"{id2name[r.split()[1]]}님이 들어왔습니다." for r in record if r.split()[0]!= "Change"]
