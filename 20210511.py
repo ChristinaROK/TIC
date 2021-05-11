@@ -29,3 +29,22 @@ def solution(n, arr1, arr2):
   # pass
   # binary 직접 구현하다가 run-time error나서 bin 내장 함수 씀 ㅠㅠ 
   # 쉬운 문제를 너무 어렵게 생각했음...
+
+# better code!
+def binary(x):
+    return bin(x)[2:]
+    
+def solution(n, arr1, arr2):
+    answer = []
+    for x1, x2 in zip(arr1, arr2):
+        a = str(int(binary(x1)) + int(binary(x2))).zfill(0)
+        answer_ = ""
+        for a_ in a:
+            if a_ == "0":
+                answer_+=" "
+            else:
+                answer_+="#"
+        answer.append(answer_)
+        
+        
+    return answer
