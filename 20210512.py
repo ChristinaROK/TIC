@@ -33,3 +33,38 @@ def solution(dartResult):
     return sum(res)
   
 # 통과 못함 ....why???
+# string을 구별하는 기준을 변하지 않는 유일한 조건인 (S,D,T)로 설정함
+
+import operator
+pow_dic = {"S":1, "D":2, "T":3}
+
+
+def solution(dartResult):
+    i=0
+    s = dartResult
+    res = []
+    while len(s)>0:
+
+        if len(s)==1: # s only contains *,#
+            if s[0] == "*":
+                res[-2:] = [n*2 for n in res[-2:]]
+            elif s[0] == "#":
+                res[-1]*=-1
+            return sum(res)
+
+        if s[i] in pow_dic.keys():
+            if s[0] in ["*","#"]:
+                if s[0] == "*":
+                    res[-2:] = [n*2 for n in res[-2:]]
+                elif s[0] == "#":
+                    res[-1]*=-1
+                s=s[1:]
+                i-=1
+            res.append(operator.pow(int(s[:i]), int(pow_dic[s[i]])))
+            s = s[i+1:]
+            i=0
+
+        else:
+            i+=1
+    return sum(res)
+# 통과!!
