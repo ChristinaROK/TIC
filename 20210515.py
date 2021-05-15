@@ -4,8 +4,8 @@ import heapq
 
 def solution(scoville, K):
     
-    if sum(scoville)**(len(scoville)-1) < K:
-        return -1 
+#     if sum(scoville)**(len(scoville)-1) < K:
+#         return -1 
     
     heapq.heapify(scoville)
     answer = 0    
@@ -21,4 +21,6 @@ def solution(scoville, K):
     
     return answer
   
-  # 효율성에서 -4 
+# pass
+# line7 => 1억개의 int를 sum하는 cost가 상당해서 효율성에서 pass하지 못했음 
+# scoville 요소 개수만큼 (max 1억) push & pop하는 것이 효율성면에서 좋음 
