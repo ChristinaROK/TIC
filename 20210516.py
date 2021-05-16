@@ -18,3 +18,15 @@ def solution(progresses, speeds):
     return answer
   
   # pass! 
+
+# Better => 모든 element를 list에 넣고 다시 pop할 필요가 없음. 
+import math
+def solution(progresses, speeds):
+    Q = []
+    for p,s in zip(progresses, speeds):
+        d = math.ceil((100-p)//s)
+        if (len(Q)==0) or (Q[-1][0]< d):
+            Q.append([d, 1])
+        else:
+            Q[-1][1]+=1
+    return [q[1] for q in Q]
