@@ -28,3 +28,19 @@ def solution(phone_book):
     return answer
 
 # pass 하지만 로직이 너무 어려움... 
+
+# 남의 logic
+# "접두사"가 되려면 요소(str)들의 첫 charcter끼리 무조건 같아야함
+# 첫 character가 같으면, 두번째, 세번째, ... 작은 length의 character의 길이 만큼 character가 같아야함
+# 결국 string의 list를 sorting하면 string의 character의 오름차순으로 정렬해줌. 
+# 따라서 접두사가 같은 string끼리 모이게 됨
+
+def solution(phone_book):
+    phone_book.sort()
+    answer = True
+    
+    for x, y in zip(phone_book, phone_book[1:]):
+        if y.startswith(x):
+            answer = False
+            return answer
+    return answer 
